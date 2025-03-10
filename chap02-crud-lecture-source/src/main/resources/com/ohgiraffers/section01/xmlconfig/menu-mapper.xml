@@ -29,4 +29,34 @@
           FROM TBL_MENU
          WHERE MENU_CODE = #{menuCode}
     </select>
+<!--    <insert id="insertMenu" parameterType="com.ohgiraffers.section01.xmlconfig.MenuDTO">-->
+    <insert id="insertMenu" parameterType="MenuDTO">
+        INSERT
+          INTO TBL_MENU
+        (
+          MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        )
+        VALUES
+        (
+          #{menuName}
+        , #{menuPrice}
+        , #{categoryCode}
+        , 'Y'
+        )
+    </insert>
+    <update id="updateMenu" parameterType="MenuDTO">
+        UPDATE
+               TBL_MENU
+           SET MENU_NAME = #{menuName}
+             , MENU_PRICE = #{menuPrice}
+         WHERE MENU_CODE = #{menuCode}
+    </update>
+    <delete id="deleteMenu" parameterType="_int">
+        DELETE
+          FROM TBL_MENU
+         WHERE MENU_CODE = #{menuCode}
+    </delete>
 </mapper>
