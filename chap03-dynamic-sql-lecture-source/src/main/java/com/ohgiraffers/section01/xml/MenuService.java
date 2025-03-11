@@ -63,6 +63,30 @@ public class MenuService {
     }
 
     public void searchMenuByNameOrCategory(Map<String, Object> searchCriteriaMap) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper mapper = sqlSession.getMapper(MenuMapper.class);
 
+        List<MenuDTO> menus = mapper.searchMenuByNameOrCategory(searchCriteriaMap);
+        System.out.println("===== Service Layer =====");
+        menus.forEach(System.out::println);
+
+        sqlSession.close();
+    }
+
+    public void modifyMenu(Map<String, Object> criteria) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper mapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = mapper.updateMenu(criteria);
+
+        if (result == 1) {
+            System.out.println("메뉴 정보 변경에 성공했습니다.");
+
+        } else {
+            System.out.println("메뉴 정보 변경에 성공했습니다.");
+
+        }
+
+        sqlSession.close();
     }
 }
