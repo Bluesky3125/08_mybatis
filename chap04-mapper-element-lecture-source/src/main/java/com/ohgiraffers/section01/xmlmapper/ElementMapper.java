@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface ElementMapper {
     List<MenuDTO> selectResultMapTest();
-    List<MenuDTO> selectResultMapAssociationTest();
+    List<MenuAndCategoryDTO> selectResultMapAssociationTest();
+    List<CategoryAndMenuDTO> selectResultMapCollectionTest();
 }
